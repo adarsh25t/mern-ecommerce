@@ -3,6 +3,7 @@ const connectToDB = require('./lib/db');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const authRoutes = require('./routes/auth/auth-routes');
 
 // * load environment variables from.env file
 dotenv.config();  
@@ -15,7 +16,7 @@ connectToDB()
 
 app.use(
     cors({
-        origin: 'http://localhost:5173/',
+        origin: 'http://localhost:5173',
         methods: ['GET', 'POST', 'PUT', 'DELETE'],
         allowedHeaders: [
             'Content-Type', 
@@ -32,7 +33,7 @@ app.use(cookieParser());
 app.use(express.json());
 
 // * routes
-
+app.use('/api/auth',authRoutes)
 
 
 // * start server
