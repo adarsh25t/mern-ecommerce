@@ -12,10 +12,12 @@ export interface FormField {
 }
 
 export interface RegisterInputs {
-    userName: string,
+    userName?: string,
     email: string,
     password: string
 }
+
+
 
 export interface LoginInputs {
     email: string,
@@ -31,12 +33,31 @@ export interface FormController {
     loading?: boolean
 }
 
+export interface User {
+    _id: string;
+    role: string;
+    email: string;
+  }
+
 export interface RegisterResponse {
     success: boolean;
     message: string;
+    user?: User | null 
+}
+
+export interface userSlicetype {
+    isAuthenticated: boolean, 
+    isLoading: boolean, 
+    user: User | null | undefined
 }
 
 export interface AsyncThunkConfig {
     state: RootState;
     rejectValue: string; 
 };
+
+export interface AuthRouteType {
+    isAuthenticated: boolean, 
+    user: User | null | undefined, 
+    children: React.ReactNode
+}

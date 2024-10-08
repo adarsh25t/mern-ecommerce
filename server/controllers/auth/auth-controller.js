@@ -74,10 +74,50 @@ const registerUser = async (req, res) => {
 
 
 // * Login
-const login = (req, res) => {
+const loginUser = async (req, res) => {
     const { email, password } = req.body;
 
     try {
+
+        // * check if user exists
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(200).json({
+                success: false,
+                message: 'User not found'
+            });
+        }
+
+        // * compare password
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(200).json({
+                success: false,
+                message: 'Invalid password'
+            });
+        }
+
+        // * generate token
+        const token = jwt.sign({
+            id: user._id,
+            role: user.role,
+            email: user.email
+        }, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+        // * return response with cookie
+        res.cookie("auth_token", token, {
+            expires: new Date(Date.now() + 3600000), // 1 hour
+            httpOnly: true,
+            secure: false
+        }).status(200).json({
+            success: true,
+            message: 'User logged in successfully',
+            user: {
+                id: user._id,
+                role: user.role,
+                email: user.email
+            }
+        })
 
     }
     catch (error) {
@@ -92,15 +132,52 @@ const login = (req, res) => {
 
 
 // * Logout
-
+const logoutUser = (req, res) => {
+    res.clearCookie("auth_token").status(200).json({
+        success: true,
+        message: 'User logged out successfully'
+    })
+}
 
 
 
 // * auth middleware
+const authMiddleware = (req, res, next) => {
+    
+    const token = req.cookies.auth_token;
+    if (!token) {
+        return res.status(401).json({
+            success: false,
+            message: 'Unauthorized'
+        });
+    }
 
+    try {
+       
+        jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+            if (err) {
+                return res.status(403).json({
+                    success: false,
+                    message: 'Access denied'
+                });
+            }
+            req.user = user;
+            next();
+        });
+
+    } catch (error) {
+        res.status(401).json({
+            success: false,
+            message: 'Unauthorized'
+        });
+    }
+}
 
 
 
 module.exports = {
-    registerUser
+    registerUser,
+    loginUser,
+    logoutUser,
+    authMiddleware
 }

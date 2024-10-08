@@ -14,7 +14,6 @@ function Register() {
   const [formData, setFormData] = useState<RegisterInputs>(registerFormInputs);
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
-  const { toast } = useToast()
   const userState = useSelector((state: RootState) => state.auth);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -32,7 +31,6 @@ function Register() {
       }
     })
   }
-
   return (
     <div className='mx-auto w-full max-w-md'>
       <h2 className='text-3xl text-center font-bold my-3'>Create new account</h2>

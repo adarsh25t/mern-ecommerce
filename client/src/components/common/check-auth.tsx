@@ -1,9 +1,11 @@
+import { AuthRouteType } from '@/config/types'
 import React from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
 
-function CheckAuth({ isAuthenticated, user, children }) {
+function CheckAuth({ isAuthenticated, user, children }: AuthRouteType) {
 
     const location = useLocation()
+
 
     if (
         !isAuthenticated &&
@@ -43,6 +45,8 @@ function CheckAuth({ isAuthenticated, user, children }) {
     ) {
         return <Navigate to="/admin/dashboard" />
     }
+
+    
 
 
     return children

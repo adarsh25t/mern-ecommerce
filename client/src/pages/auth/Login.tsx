@@ -1,22 +1,32 @@
 import CommonForm from '@/components/common/form';
+import { toastMessage } from '@/components/common/toast';
 import { loginFormController, loginFormInputs } from '@/config';
 import { LoginInputs } from '@/config/types';
-import React, { useState, useTransition } from 'react'
-import { Link } from 'react-router-dom';
+import { loginUser } from '@/store/auth-slice';
+import { AppDispatch, RootState } from '@/store/store';
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Login() {
 
   const [formData, setFormData] = useState<LoginInputs>(loginFormInputs);
-  const [transition, setTransition] = useTransition();
+  const dispatch = useDispatch<AppDispatch>();
+  const userState = useSelector((state: RootState) => state.auth);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // useTransition(() => {
-
-    // })
-    // TODO: call API to register user
-    // await registrationFormController.submitForm(formData);
+    dispatch(loginUser(formData)).then((data) => {
+      if (typeof data.payload === 'object') {
+        if (data.payload?.success) {
+          toastMessage(data.payload?.message, "green")
+        }
+        else {
+          toastMessage(data.payload?.message, "red")
+        }
+      }
+    })
   }
 
   return (
@@ -28,7 +38,7 @@ function Login() {
         setFormData={setFormData}
         onSumitText={"Register"}
         onSubmit={handleSubmit}
-        loading={transition}
+        loading={userState.isLoading}
       />
       <p className='text-sm text-left text-gray-600 my-2'>
         Don't have an account? <Link to="/auth/register" className='text-primary font-bold'>Register</Link>

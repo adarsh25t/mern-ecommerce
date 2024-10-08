@@ -13,13 +13,25 @@ import ShoppingCheckoutPage from './pages/shopping-view/checkout'
 import ShoppingListingPage from './pages/shopping-view/listing'
 import NotFoundPage from './pages/not-found'
 import CheckAuth from './components/common/check-auth'
+import { useDispatch, useSelector } from 'react-redux'
+import { AppDispatch, RootState } from './store/store'
+import { useEffect } from 'react'
+import { checkUser } from './store/auth-slice'
 
 function App() {
 
-  const isAuthenticated = false;
-  const user = {
-    role: 'user'
-  };
+  const userState = useSelector((state: RootState) => state.auth);
+  const dispatch = useDispatch<AppDispatch>();
+  const isAuthenticated = userState?.isAuthenticated;
+  const user = userState?.user;
+
+  useEffect(() => {
+    dispatch(checkUser(null))
+  },[dispatch])
+
+  if (userState.isLoading) {
+    return <div>Loading...</div>
+  }
 
   return (
     <div className='flex flex-col overflow-hidden bg-white'>
