@@ -1,10 +1,11 @@
 import CommonForm from '@/components/common/form'
+import { toastMessage } from '@/components/common/toast';
 import { registerFormInputs, registrationFormController } from '@/config'
 import { RegisterInputs } from '@/config/types'
 import { useToast } from '@/hooks/use-toast';
 import { registerUser } from '@/store/auth-slice';
 import { AppDispatch, RootState } from '@/store/store';
-import { useState, useTransition } from 'react'
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -20,18 +21,16 @@ function Register() {
     e.preventDefault();
 
     dispatch(registerUser(formData)).then((data) => {
-      if (typeof data.payload === 'object' && data.payload?.success) {
-        toast({
-          type: 'foreground',
-          title: data.payload?.message,
-          style: {
-            color: "green"
-          }
-        })
-        navigate('/auth/login');
+      if (typeof data.payload === 'object') {
+        if (data.payload?.success) {
+          toastMessage(data.payload?.message, "green")
+          navigate('/auth/login');
+        }
+        else {
+          toastMessage(data.payload?.message, "red")
+        }
       }
     })
-    
   }
 
   return (

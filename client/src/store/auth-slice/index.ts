@@ -18,9 +18,12 @@ export const registerUser = createAsyncThunk<RegisterResponse, RegisterInputs, A
                 { withCredentials: true }
             );
             return response.data;
-        } catch (error) {
-            // Handle error and reject with a specific error message
-            return rejectWithValue('Failed to register user');
+        } catch (error: any) {
+            console.log('====================================');
+            console.log(error);
+            console.log('====================================');
+            // *Handle error and reject with a specific error message
+            return rejectWithValue(error);
         }
     }
 )

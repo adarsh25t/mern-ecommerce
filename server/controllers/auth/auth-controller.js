@@ -9,6 +9,40 @@ const registerUser = async (req, res) => {
 
     try {
 
+        // * check if user already exists
+        const user = await User.findOne({ email });
+        if (user) {
+            return res.status(200).json({
+                success: false,
+                message: 'User already exists'
+            });
+        }
+
+        // * verify unique username 
+        const existingUser = await User.findOne({ userName });
+        if (existingUser) {
+            return res.status(200).json({
+                success: false,
+                message: 'Username already exists'
+            });
+        }
+
+        // * validate email format
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            return res.status(200).json({
+                success: false,
+                message: 'Invalid email format'
+            });
+        }
+
+        // * validate password length
+        if (password.length < 6) {
+            return res.status(200).json({
+                success: false,
+                message: 'Password must be at least 6 characters long'
+            });
+        }
 
         // * hash password
         const hashedPassword = await bcrypt.hash(password, 12);
