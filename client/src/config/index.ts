@@ -1,4 +1,4 @@
-
+import { LayoutDashboard } from 'lucide-react';
 
 export const backendUrl = "http://localhost:5000/api";
 
@@ -59,3 +59,32 @@ export const loginFormInputs = {
     email: "",
     password: ""
 }
+
+
+export const adminRoutes = [
+    {
+        label: 'Dashboard',
+        path: '/admin/dashboard',
+        icon:','
+    },
+    {
+        label: 'Products',
+        path: '/admin/products',
+        icon: 'ShoppingCart',
+    },
+    {
+        label: 'Orders',
+        path: '/admin/orders',
+        icon: 'ShoppingBag',
+    },
+    {
+        label: 'Customers',
+        path: '/admin/customers',
+        icon: 'Users',
+    },
+    {
+        label: 'Features',
+        path: '/admin/features',
+        icon: 'Cog',
+    },
+]
