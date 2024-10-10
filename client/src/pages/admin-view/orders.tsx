@@ -1,9 +1,9 @@
 import React from 'react'
 
-function orders() {
+function AdminOrders() {
   return (
     <div>orders</div>
   )
 }
 
-export default orders
+export default AdminOrders

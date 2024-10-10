@@ -5,9 +5,9 @@ import AdminSideBar from '../admin-sidebar'
 
 function AdminLayout() {
   return (
-    <div className="flex ">
+    <div className="w-screen flex ">
       <AdminSideBar />
-      <main>
+      <main className='flex-1'>
         <AdminHeader />
         <Outlet />
       </main>

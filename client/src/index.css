@@ -66,6 +66,15 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  .admin-nav-menuitem {
+    @apply transition duration-700 ease-in-out;
+    @apply hover:bg-zinc-800 hover:text-white;
+  }
+  .admin-logout-button {
+    @apply transition duration-700 ease-in-out w-full flex gap-2 bg-white;
+    @apply hover:bg-zinc-800 hover:text-black;
+  }
 }
 
 body {

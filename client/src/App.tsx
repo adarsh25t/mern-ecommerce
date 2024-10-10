@@ -17,6 +17,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from './store/store'
 import { useEffect } from 'react'
 import { checkUser } from './store/auth-slice'
+import AdminProducts from './pages/admin-view/products'
+import AdminOrders from './pages/admin-view/orders'
 
 function App() {
 
@@ -34,7 +36,7 @@ function App() {
   }
 
   return (
-    <div className='flex flex-col overflow-hidden bg-white'>
+    <div className=''>
 
       {/* ALL ROUTES */}
       <Routes>
@@ -59,6 +61,8 @@ function App() {
           </CheckAuth>
         }>
           <Route path='dashboard' element={<Dashboard />} />
+          <Route path='products' element={<AdminProducts />} />
+          <Route path='orders' element={<AdminOrders />} />
         </Route>
 
         <Route path='/shop' element={
