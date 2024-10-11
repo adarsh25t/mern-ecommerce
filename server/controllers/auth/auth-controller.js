@@ -144,9 +144,9 @@ const logoutUser = (req, res) => {
 // * auth middleware
 const authMiddleware = (req, res, next) => {
     
-    const token = req.cookies.auth_token;
+    const token = req.cookies?.auth_token;
     if (!token) {
-        return res.status(401).json({
+        return res.status(200).json({
             success: false,
             message: 'Unauthorized'
         });
@@ -156,7 +156,7 @@ const authMiddleware = (req, res, next) => {
        
         jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
             if (err) {
-                return res.status(403).json({
+                return res.status(200).json({
                     success: false,
                     message: 'Access denied'
                 });
@@ -166,7 +166,7 @@ const authMiddleware = (req, res, next) => {
         });
 
     } catch (error) {
-        res.status(401).json({
+        res.status(200).json({
             success: false,
             message: 'Unauthorized'
         });

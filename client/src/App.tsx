@@ -37,7 +37,7 @@ function App() {
   }
 
   return (
-    <div className=''>
+    <div className='bg-sky-50'>
 
       {/* ALL ROUTES */}
       <Routes>
@@ -67,7 +67,7 @@ function App() {
           <Route path='categories' element={<AdminCategories />} />
         </Route>
 
-        <Route path='/shop' element={
+        <Route path='/' element={
           <CheckAuth
             isAuthenticated={isAuthenticated}
             user={user}

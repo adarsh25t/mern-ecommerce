@@ -32,6 +32,7 @@
     --chart-5: 27 87% 67%;
     --radius: 0.5rem
   }
+
   .dark {
     --background: 20 14.3% 4.1%;
     --foreground: 60 9.1% 97.8%;
@@ -59,10 +60,12 @@
     --chart-5: 340 75% 55%
   }
 }
+
 @layer base {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -71,6 +74,7 @@
     @apply transition duration-700 ease-in-out;
     @apply hover:bg-zinc-800 hover:text-white;
   }
+
   .admin-logout-button {
     @apply transition duration-700 ease-in-out w-full flex gap-2 bg-white;
     @apply hover:bg-zinc-800 hover:text-black;
@@ -81,4 +85,29 @@ body {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-style: normal;
+}
+
+.scrollbar-none {
+  /* For WebKit-based browsers (Chrome, Safari) */
+  -webkit-overflow-scrolling: touch;
+  /* Optional for smooth scrolling */
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+  /* Hide the scrollbar for WebKit browsers */
+}
+
+/* For Firefox */
+.scrollbar-none {
+  scrollbar-width: none;
+  /* Hide scrollbar for Firefox */
+}
+
+.carousel-images button {
+  display: none;
+}
+
+.product-cart-icon {
+  display: flex !important;
 }

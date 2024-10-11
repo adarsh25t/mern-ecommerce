@@ -67,3 +67,24 @@ export interface AuthRouteType {
     user: User | null | undefined, 
     children: React.ReactNode
 }
+
+export interface ProductItemProps {
+    image: string;    
+    title: string;   
+    rating: number; 
+    sellPrice: number;  
+    price: number; 
+}
+
+export interface StarRatingProps {
+    rating: number;       
+    maxRating?: number;  
+    size?: number;    
+    color?: string;  
+}
+
+export interface CategoryHeaderProps {
+    title: string;
+    link: string;
+    urltext: string;
+}

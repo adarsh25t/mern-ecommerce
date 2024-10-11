@@ -6,13 +6,19 @@ function CheckAuth({ isAuthenticated, user, children }: AuthRouteType) {
 
     const location = useLocation()
 
-
+    if (
+        !isAuthenticated &&
+        location.pathname == '/'
+    ) {
+        return <Navigate to="/home" />
+    }
+   
     if (
         !isAuthenticated &&
         !(location.pathname.includes("/login") ||
             location.pathname.includes("/register"))
     ) {
-        return <Navigate to="/auth/login" />
+       // return <Navigate to="/auth/login" />
     }
 
     if (
@@ -25,7 +31,7 @@ function CheckAuth({ isAuthenticated, user, children }: AuthRouteType) {
             return <Navigate to="/admin/dashboard" />
         }
         else {
-            return <Navigate to="/shop/home" />
+            return <Navigate to="/home" />
         }
     }
 
@@ -35,7 +41,7 @@ function CheckAuth({ isAuthenticated, user, children }: AuthRouteType) {
         user?.role !== "admin" &&
         location.pathname.includes("/admin")
     ) {
-        return <Navigate to="/shop/home" />
+        return <Navigate to="/home" />
     }
 
     if (
@@ -45,8 +51,6 @@ function CheckAuth({ isAuthenticated, user, children }: AuthRouteType) {
     ) {
         return <Navigate to="/admin/dashboard" />
     }
-
-    
 
 
     return children
