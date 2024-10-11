@@ -1,10 +1,10 @@
 
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '../ui/dropdown-menu'
-import { Avatar, AvatarFallback } from '../ui/avatar'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '../../ui/dropdown-menu'
+import { Avatar, AvatarFallback } from '../../ui/avatar'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/store/store';
 import { LogOut } from 'lucide-react';
-import { Button } from '../ui/button';
+import { Button } from '../../ui/button';
 
 function AdminHeader() {
 

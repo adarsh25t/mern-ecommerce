@@ -61,30 +61,86 @@ export const loginFormInputs = {
 }
 
 
-export const adminRoutes = [
+export const addProductsFromElement = [
     {
-        label: 'Dashboard',
-        path: '/admin/dashboard',
-        icon:','
+        name: "title",
+        label: "Title",
+        placeholder: "Enter product title",
+        componentType: "input",
+        type: "text",
+        required: true
     },
     {
-        label: 'Products',
-        path: '/admin/products',
-        icon: 'ShoppingCart',
+        name: "description",
+        label: "Description",
+        placeholder: "Enter product description",
+        componentType: "textarea",
+        type: "text",
     },
     {
-        label: 'Orders',
-        path: '/admin/orders',
-        icon: 'ShoppingBag',
+        name: "category",
+        label: "Category",
+        placeholder: "Select product category",
+        componentType: "select",
+        type: "text",
+        options: [
+            { value: "men", label: "Men" },
+            { value: "women", label: "Women" },
+            { value: "kids", label: " Kids" },
+            { value: "Sports & Outdoors", label: "Sports & Outdoors" },
+            { value: "electronics", label: "Electronics" },
+            { value: "footwear", label: "Footwear" },
+        ]
     },
     {
-        label: 'Customers',
-        path: '/admin/customers',
-        icon: 'Users',
+        name: "brand",
+        label: "Brand",
+        placeholder: "Select product brand",
+        componentType: "select",
+        type: "text",
+        required: true,
+        options: [
+            { value: "Nike", label: "Nike" },
+            { value: "Adidas", label: "Adidas" },
+            { value: "Puma", label: "Puma" },
+            { value: "Reebok", label: "Reebok" },
+            { value: "Vans", label: "Vans" },
+            { value: "Converse", label: "Converse" },
+        ]
     },
     {
-        label: 'Features',
-        path: '/admin/features',
-        icon: 'Cog',
+        name: "price",
+        label: "Price",
+        placeholder: "Enter product price",
+        componentType: "input",
+        type: "number",
+        required: true
     },
+    {
+        name: "salePrice",
+        label: "Sale Price",
+        placeholder: "Enter product sale price",
+        componentType: "input",
+        type: "number",
+        required: true
+    },
+    {
+        name: "totalStock",
+        label: "Total Stock",
+        placeholder: "Enter product total stock",
+        componentType: "input",
+        type: "number",
+        required: true
+    }
 ]
+
+export const addFormInputs = {
+    image:"",
+    title: "",
+    description: "",
+    category: "",
+    brand: "",
+    price: "",
+    salePrice: "",
+    totalStock: ""
+}

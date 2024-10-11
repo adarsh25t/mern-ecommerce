@@ -1,6 +1,4 @@
-import { ChartNoAxesCombined, LayoutDashboard, LogOut, ShoppingBasket, Store } from 'lucide-react'
-import React from 'react'
-import { Button } from '../ui/button'
+import { ChartBarStacked, ChartNoAxesCombined, LayoutDashboard, ShoppingBasket, Store } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom';
 
 const routes = [
@@ -15,10 +13,16 @@ const routes = [
         icon: <ShoppingBasket size={14}/>
     },
     {
+        path: '/admin/categories',
+        label: 'Categories',
+        icon: <ChartBarStacked size={14}/>
+    },
+    {
         path: '/admin/orders',
         label: 'Orders',
         icon: <Store size={14}/>
-    }
+    },
+
 ];
 
 function AdminSideBar() {

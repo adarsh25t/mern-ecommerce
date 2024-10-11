@@ -19,6 +19,7 @@ import { useEffect } from 'react'
 import { checkUser } from './store/auth-slice'
 import AdminProducts from './pages/admin-view/products'
 import AdminOrders from './pages/admin-view/orders'
+import AdminCategories from './pages/admin-view/categories'
 
 function App() {
 
@@ -63,6 +64,7 @@ function App() {
           <Route path='dashboard' element={<Dashboard />} />
           <Route path='products' element={<AdminProducts />} />
           <Route path='orders' element={<AdminOrders />} />
+          <Route path='categories' element={<AdminCategories />} />
         </Route>
 
         <Route path='/shop' element={

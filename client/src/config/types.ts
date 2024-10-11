@@ -9,6 +9,12 @@ export interface FormField {
     componentType: string;
     type: string;
     required?: boolean;
+    options?: SelectOption[]
+}
+
+export interface SelectOption {
+    value: string, 
+    label: string | number
 }
 
 export interface RegisterInputs {
