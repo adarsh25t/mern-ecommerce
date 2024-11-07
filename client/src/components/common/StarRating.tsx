@@ -1,6 +1,5 @@
 import { StarRatingProps } from '@/config/types';
 import { Star } from 'lucide-react';
-import React from 'react'
 
 const StarRating = ({ rating, maxRating = 5, size = 18, color = "#029f24" }:StarRatingProps) => {
     const stars = [];

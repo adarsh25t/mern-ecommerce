@@ -2,14 +2,12 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { CloudUpload, File, XIcon } from 'lucide-react';
-import React, { useRef } from 'react'
+import { useRef } from 'react'
 
 function AdminProductImageUpload({
     file,
     setFile,
-    uploadedImageUrl,
-    setUploadedImageUrl
-}) {
+}: any) {
 
     const inputRef = useRef<HTMLInputElement>(null);
 

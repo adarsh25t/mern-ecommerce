@@ -2,9 +2,9 @@ import ProductAds from '@/components/shopping-view/ads-item'
 import ShopCategories from '@/components/shopping-view/categories'
 import CategoryListHeader from '@/components/shopping-view/category-list-header'
 import { ImageCarousel } from '@/components/shopping-view/image-carousel'
-import ProductItem from '@/components/shopping-view/product-item'
+
 import ProductCarousel from '@/components/shopping-view/products-carousel'
-import React from 'react'
+
 
 function ShoppingHomePage() {
   return (

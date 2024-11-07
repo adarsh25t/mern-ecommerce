@@ -2,7 +2,6 @@ import CommonForm from '@/components/common/form'
 import { toastMessage } from '@/components/common/toast';
 import { registerFormInputs, registrationFormController } from '@/config'
 import { RegisterInputs } from '@/config/types'
-import { useToast } from '@/hooks/use-toast';
 import { registerUser } from '@/store/auth-slice';
 import { AppDispatch, RootState } from '@/store/store';
 import { useState } from 'react'

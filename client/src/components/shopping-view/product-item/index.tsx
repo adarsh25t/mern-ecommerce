@@ -2,7 +2,7 @@ import StarRating from '@/components/common/StarRating'
 import { Button } from '@/components/ui/button'
 import { ProductItemProps } from '@/config/types';
 import { IndianRupee, ShoppingCartIcon, Heart } from 'lucide-react'
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 function ProductItem({
     image,

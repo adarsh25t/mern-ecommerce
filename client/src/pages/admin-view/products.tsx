@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 import { addFormInputs, addProductsFromElement } from "@/config"
 import { addProduct } from "@/store/admin/product-slice"
-import { AppDispatch, RootState } from "@/store/store"
+import { AppDispatch } from "@/store/store"
 import { useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 
 
 function AdminProducts() {
@@ -18,7 +18,7 @@ function AdminProducts() {
   const [uploadedImageUrl, setUploadedImageUrl] = useState('');
 
   const dispatch = useDispatch<AppDispatch>();
-  const productState = useSelector((state: RootState) => state.adminProducts);
+ // const productState = useSelector((state: RootState) => state.adminProducts);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -45,9 +45,7 @@ function AdminProducts() {
         }
       }
     })
-    console.log('====================================');
-    console.log(formData, imageFile);
-    console.log('====================================');
+    
   }
 
   return (

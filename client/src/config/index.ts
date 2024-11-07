@@ -1,4 +1,3 @@
-import { LayoutDashboard } from 'lucide-react';
 
 export const backendUrl = "http://localhost:5000/api";
 

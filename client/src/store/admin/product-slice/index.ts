@@ -1,5 +1,5 @@
 import { backendUrl } from "@/config";
-import { AddProductProps, AsyncThunkConfig, ResponseProps } from "@/config/types";
+import { AsyncThunkConfig, ResponseProps } from "@/config/types";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -10,7 +10,7 @@ const initialState = {
 };
 
 
-export const addProduct = createAsyncThunk<ResponseProps, AddProductProps, AsyncThunkConfig>('/product/add',
+export const addProduct = createAsyncThunk<ResponseProps, FormData, AsyncThunkConfig>('/product/add',
     async (formdata, { rejectWithValue }) => {
         try {
             const response = await axios.post<ResponseProps>(
