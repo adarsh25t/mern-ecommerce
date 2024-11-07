@@ -16,9 +16,6 @@ function AdminProductImageUpload({
     const handleFileChange = (e: any) => {
 
         const selectedFile = e.target.files?.[0]
-        console.log('====================================');
-        console.log(selectedFile);
-        console.log('====================================');
         if (selectedFile) {
             setFile(selectedFile)
         }

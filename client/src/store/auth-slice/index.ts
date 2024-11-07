@@ -62,7 +62,28 @@ export const checkUser = createAsyncThunk<RegisterResponse, null, AsyncThunkConf
             return rejectWithValue(error);
         }
     }
-)
+);
+
+export const logoutUser = createAsyncThunk<null, null, AsyncThunkConfig>('/auth/logout',
+    async (_, { rejectWithValue }) => {
+        try {
+            const response = await axios.post<null>(
+                `${backendUrl}/auth/logout`,
+                {
+                    withCredentials: true,
+                    headers: {
+                        'Cache-Control': 'no-cache, no-store, must-revalidate, proxy-revalidate',
+                        'Expires': '0'
+                    }
+                }
+            );
+            return response.data;
+        } catch (error: any) {
+            // *Handle error and reject with a specific error message
+            return rejectWithValue(error);
+        }
+    }
+);
 
 const authSlice = createSlice({
     name: 'auth',
@@ -113,6 +134,15 @@ const authSlice = createSlice({
             state.isAuthenticated = false;
             state.user = null;
         })
+        
+        // * logout function is called
+        .addCase(
+            logoutUser.fulfilled,
+            (state) => {
+                state.isAuthenticated = false;
+                state.user = null;
+            }
+        );
 
     }
 })

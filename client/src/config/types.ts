@@ -23,8 +23,6 @@ export interface RegisterInputs {
     password: string
 }
 
-
-
 export interface LoginInputs {
     email: string,
     password: string
@@ -87,4 +85,20 @@ export interface CategoryHeaderProps {
     title: string;
     link: string;
     urltext: string;
+}
+
+export interface ResponseProps {
+    success: boolean;
+    message: string;
+}
+
+export interface AddProductProps {
+    image?:File,
+    title: string,
+    description: string,
+    category: string,
+    brand: string,
+    price: number,
+    salePrice: number,
+    totalStock: number
 }

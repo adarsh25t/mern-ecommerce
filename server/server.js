@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const authRoutes = require('./routes/auth/auth-routes');
+const productRoutes = require('./routes/product/product-routes')
 
 // * load environment variables from.env file
 dotenv.config();  
@@ -33,7 +34,8 @@ app.use(cookieParser());
 app.use(express.json());
 
 // * routes
-app.use('/api/auth',authRoutes)
+app.use('/api/auth',authRoutes);
+app.use('/api/product',productRoutes)
 
 
 // * start server

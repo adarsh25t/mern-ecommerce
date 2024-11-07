@@ -1,26 +1,27 @@
-import { ChartBarStacked, ChartNoAxesCombined, LayoutDashboard, ShoppingBasket, Store } from 'lucide-react'
+import { Button } from '@/components/ui/button';
+import { ChartBarStacked, ChartNoAxesCombined, LayoutDashboard, LogOut, ShoppingBasket, Store } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom';
 
 const routes = [
     {
         path: '/admin/dashboard',
         label: 'Dashboard',
-        icon: <LayoutDashboard size={14}/>
+        icon: <LayoutDashboard size={14} />
     },
     {
         path: '/admin/products',
         label: 'Products',
-        icon: <ShoppingBasket size={14}/>
+        icon: <ShoppingBasket size={14} />
     },
     {
         path: '/admin/categories',
         label: 'Categories',
-        icon: <ChartBarStacked size={14}/>
+        icon: <ChartBarStacked size={14} />
     },
     {
         path: '/admin/orders',
         label: 'Orders',
-        icon: <Store size={14}/>
+        icon: <Store size={14} />
     },
 
 ];
@@ -41,9 +42,9 @@ function AdminSideBar() {
                 {/* Admin-specific routes */}
                 <nav className="flex flex-col gap-1">
                     {routes.map(({ path, label, icon }) => (
-                        <Link 
-                            key={path} 
-                            to={path} 
+                        <Link
+                            key={path}
+                            to={path}
                             className={`flex items-center gap-2 p-2  rounded-md admin-nav-menuitem
                             ${location.pathname === path ? 'bg-zinc-800 text-white' : 'text-black'}`}>
                             {icon}
@@ -52,6 +53,11 @@ function AdminSideBar() {
                     ))}
                 </nav>
             </div>
+
+            <Button className='admin-logout-button' >
+                <LogOut />
+                Logout
+            </Button>
         </aside>
     )
 }

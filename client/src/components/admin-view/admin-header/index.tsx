@@ -3,7 +3,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel,
 import { Avatar, AvatarFallback } from '../../ui/avatar'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/store/store';
-import { LogOut } from 'lucide-react';
+import { LogOut, Menu } from 'lucide-react';
 import { Button } from '../../ui/button';
 
 function AdminHeader() {
@@ -35,7 +35,9 @@ function AdminHeader() {
 
   return (
     <header className="w-full flex items-center justify-between p-4 shadow-md">
-      <h1>Admin Dashboard</h1>
+      <Button variant={'link'}>
+        <Menu />
+      </Button>
       <ProfileIcon />
     </header>
   )

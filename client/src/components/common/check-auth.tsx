@@ -18,7 +18,7 @@ function CheckAuth({ isAuthenticated, user, children }: AuthRouteType) {
         !(location.pathname.includes("/login") ||
             location.pathname.includes("/register"))
     ) {
-       // return <Navigate to="/auth/login" />
+       return <Navigate to="/auth/login" />
     }
 
     if (
